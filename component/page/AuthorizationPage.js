@@ -1,30 +1,30 @@
+    var webdriver = require('selenium-webdriver'),
+        By = webdriver.By,
+        until = webdriver.until;
     var Page = require('./TestUtils');
 
     Page.prototype.clickHeaderInputButton = function () {
-        return this.find('//a[@class=\'brusnika__btn\']').click();
+        return this.driver.wait(until.elementLocated(By.xpath('//a[@class=\'brusnika__btn\']')), 10000).click();
     }
 
     Page.prototype.logInFormIsDisplayed = function () {
-        this.find('//form[@class=\'auth-form\']');
+        return this.driver.wait(until.elementLocated(By.xpath('//form[@class=\'auth-form\']')), 10000);
     }
 
     Page.prototype.emailInputField = function () {
-        this.write('//input[@id=\'input-44\']','ulia_ogorodnova@mail.ru');
+        return this.driver.findElement(By.xpath('//div[@name=\'email\']/input')).sendKeys('ulia_ogorodnova@mail.ru');
     }
 
     Page.prototype.passwordInputField = function () {
-        this.write('//input[@id=\'input-46\']','qwerty');
+        return this.driver.findElement(By.xpath('//div[@name=\'password\']/input')).sendKeys('qwerty');
     }
 
     Page.prototype.clickInputButton = function () {
-        return this.find('//button[@class=\'button login-btn filled large brusnika\']').click();
+        return this.driver.findElement(By.xpath('//div[@class=\'content\']')).click();
     }
 
     Page.prototype.profileFormIsDisplayed = function () {
-        this.emailInputField();
-        this.passwordInputField();
-        this.clickInputButton();
-        return this.find('//span[@class=\'full-name\']').getText();
-    };
+        return this.driver.wait(until.elementLocated(By.xpath('//span[@class=\'full-name\']')), 10000);
+    }
 
     module.exports = Page;
