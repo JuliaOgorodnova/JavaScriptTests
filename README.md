@@ -5,6 +5,7 @@ First of all, install ChromeDriver on the local computer
 * [JavaScripr](https://www.javascript.com/)
 * [JEST](https://jestjs.io/)
 * [Selenium](https://www.selenium.dev/)
+* IDE (That's at your discretion)
 
 
 
